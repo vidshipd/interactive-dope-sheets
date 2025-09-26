@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Dope Sheet Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            overflow: hidden;
+        }
+        h1, h2, h3 { font-weight: 700; }
+        .soundbite-quote {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1rem;
+            margin-top: 0rem;
+            font-style: italic;
+            color: #475569;
+        }
+        .main-content-area {
+            height: calc(100vh - 72px);
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-gray-800 text-white py-3 px-6 flex items-center justify-between border-b-4 border-sky-500 sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <img src="Newspath logo.PNG" alt="CBS Newspath Now Logo" class="h-10">
+            <span class="text-xl font-medium text-gray-200 hidden sm:block">Dope Sheets</span>
+        </div>
+        <div class="flex items-baseline gap-2"> 
+            <span class="text-sm text-gray-400 relative top-[5px]">powered by</span> <img src="VideoShipLogo@2x.png" alt="VideoShip Logo" class="h-8 self-center">
+            <span class="text-base font-medium text-gray-300 italic relative top-[5px]">MediaLab</span> 
+        </div>
+    </header>
+
+    <main class="flex main-content-area">
+        <aside id="index-panel" class="w-full md:w-1/3 lg:w-1/4 bg-slate-100 border-r border-slate-200 p-3 overflow-y-auto"></aside>
+        <section id="content-panel" class="w-full md:w-2/3 lg:w-3/4 overflow-y-auto"></section>
+    </main>
+
+<script>
+    // --- MASTER DATA SOURCE ---
+    const allDopeSheets = [
+        {
+            id: "ds1", video_filename: "video2.mp4", duration_sec: 137.398, headline: "Star-Studded Cast Premieres Wes Anderson's Phoenician Scheme", summary: "An ensemble A-list cast including Benicio del Toro and Mia Threpleton celebrates the New York premiere of Wes Anderson's latest film.", tone_tags: ["celebratory", "polished", "glamorous"], synopsis: "The Phoenician Scheme premiered in New York with an impressive A-list ensemble cast walking the red carpet. Benicio del Toro stars as Zsa Zsa Korda, one of Europe's richest men who lives without citizenship or traditional attachments, focused solely on winning and staying on top. The film marks a breakout role for Mia Threpleton, Kate Winslet's real-life daughter, who plays Liesel, Korda's nun daughter and sole heir to his estate.\n\nDirector Wes Anderson explores his recurring theme of dysfunctional families through the relationship between father and daughter. The veteran cast, including Scarlett Johansson, Tom Hanks, and Bryan Cranston, praised Anderson's collaborative approach and family-like atmosphere on set. Michael Cera makes his Wes Anderson debut as a Norwegian tutor, describing the film as an old-school adventure romp through Anderson's distinctive visual world.", topic_tags: ["film premiere", "Wes Anderson", "celebrity interviews", "red carpet", "ensemble cast", "family drama", "Focus Features", "New York premiere"],
+            chapters: [{ title: "Red Carpet Arrivals", description: "A-list cast members arrive at The Phoenician Scheme premiere in New York.", chapter_in_point: { sec: 1.635 } }, { title: "Benicio del Toro Character", description: "Del Toro discusses his role as the wealthy, stateless businessman Zsa Zsa Korda.", chapter_in_point: { sec: 13.313 } }, { title: "Mia Threpleton Breakout Role", description: "Kate Winslet's daughter discusses her character Liesel, a determined nun and sole heir.", chapter_in_point: { sec: 32.466 }, sound_bites: [{ text: "She's very no-nonsense. She means business and she is not about to to be pushed aside or not get the answer that she's asking for from her father.", speaker_name: "Mia Threpleton" }] }, { title: "Wes Anderson Direction", description: "The director explains the family dynamics and themes in his latest film.", chapter_in_point: { sec: 54.655 }, sound_bites: [{ text: "...his whole business plan is really a mechanism for him to get back together with her.", speaker_name: "Wes Anderson" }] }, { title: "Cast Collaboration Experience", description: "Bryan Cranston describes the family-like atmosphere Anderson creates on set.", chapter_in_point: { sec: 78.045 }, sound_bites: [{ text: "You go back to the hotel, shower, clean up, and then go downstairs and there's a bar and there's a a long table where all the actors and Wes and the writers and producers, we all sit down and we have dinner together.", speaker_name: "Bryan Cranston" }] }, { title: "Michael Cera Adventure Film", description: "Cera describes his first Wes Anderson film as an old-school adventure romp.", chapter_in_point: { sec: 121.888 }, sound_bites: [{ text: "It's like an adventure movie. It's like an old school, you know, romp through this world. So I think it's a fun ride.", speaker_name: "Michael Cera" }] }],
+            key_entities: [{ name: "Benicio Del Toro", keyframe_image: true, entity_role: "subject", details: ["Plays Zsa Zsa Korda, one of the richest men in Europe", "Character described as stateless and citizenship-free", "Portrays a one-dimensional bully focused on winning"] }, { name: "Mia Threpleton", keyframe_image: true, entity_role: "subject", details: ["Kate Winslet's real-life daughter in breakout role", "Plays Liesel, a nun and Korda's only daughter", "Character is sole heir to her father's estate", "Described as very no-nonsense and business-focused"] }, { name: "Wes Anderson", keyframe_image: true, entity_role: "subject", details: ["Film director known for distinctive visual storytelling style", "Explores recurring theme of dysfunctional families", "Creates family-like atmosphere for cast on set"] }, { name: "Bryan Cranston", keyframe_image: true, entity_role: "subject", details: ["Veteran actor in his third Wes Anderson film", "Describes collaborative dinner gatherings with cast and crew", "Emphasizes family-like bonds formed during production"] }, { name: "Michael Cera", keyframe_image: true, entity_role: "subject", details: ["Plays Norwegian tutor in his first Wes Anderson film", "Describes film as old-school adventure movie", "Calls it a fun romp through Anderson's world"] }, { name: "Taylor Macy", keyframe_image: true, entity_role: "journalist", affiliation: "CBS News", details: ["Role: Journalist narrator", "Affiliation: CBS News", "Contribution: Provides story narration and red carpet coverage"] }]
+        },
+        {
+            id: "ds2", video_filename: "video3.mp4", duration_sec: 99.506, headline: "Autism-Friendly Car Wash Creates Employment Opportunities", summary: "Rising Tide Car Wash employs over 100 workers with autism, providing meaningful employment and community integration.", tone_tags: ["Inspiring", "Documentary", "Community-focused"], synopsis: "Rising Tide Car Wash in Coral Springs, Florida, represents a groundbreaking approach to employment for individuals with autism spectrum disorders. Founded by Thomas Deery and his father to provide opportunities for Thomas's younger brother Andrew and others like him, the business has grown to employ more than 100 people across three locations, with over 80% of staff members having autism. The initiative addresses the significant unemployment challenges faced by the autism community, where rates can reach as high as 80% according to various studies.\n\nThe car wash has become more than just a business—it's a transformative space where employees develop valuable skills, earn meaningful wages, and build lasting friendships. Workers like 17-year-old Edward Cruz express genuine pride in their contributions, emphasizing how the work makes a real difference in customers' lives. For families like the Deerys, the business has brought the family closer together while demonstrating that employees with autism not only meet expectations but often exceed them through their genuine dedication and attention to detail.", topic_tags: ["Autism employment", "Inclusive business", "Community impact", "Family business", "Disability advocacy", "Workforce development"],
+            chapters: [{ title: "Introduction and Employment Challenge", description: "Opening introduces Edward Cruz and the broader unemployment crisis facing people with autism.", chapter_in_point: { sec: 36.403 } }, { title: "Edward's Personal Experience", description: "Edward Cruz shares his perspective on working at Rising Tide and the impact it has made.", chapter_in_point: { sec: 27.427 }, sound_bites: [{ text: "I'm happy that what we do, it really does make a difference.", speaker_name: "Edward Cruz" }] }, { title: "Family Story and Business Origins", description: "Thomas Deery explains how Rising Tide began as a solution for his brother Andrew's future.", chapter_in_point: { sec: 36.503 }, sound_bites: [{ text: "we were going to have to take action in order for him to lead the full adult life that we knew he was capable of.", speaker_name: "Thomas Deery" }] }, { title: "Andrew's Transformation and Success", description: "Thomas describes how the car wash has transformed Andrew's life and brought the family together.", chapter_in_point: { sec: 51.785 }, sound_bites: [{ text: "Today he has friends, he has a community of peers, he has money in his pocket... and it's brought our family together.", speaker_name: "Thomas Deery" }] }, { title: "Business Success and Employee Excellence", description: "Thomas explains how employees with autism exceed expectations through genuine dedication.", chapter_in_point: { sec: 63.196 }, sound_bites: [{ text: "They're going to exceed expectations because our team genuinely want to be here.", speaker_name: "Thomas Deery" }] }, { title: "Andrew's Voice and Daily Work", description: "Andrew shares his enthusiasm for work and customers while demonstrating his skills.", chapter_in_point: { sec: 79.152 } }],
+            key_entities: [{ name: "Edward Cruz", keyframe_image: true, entity_role: "subject", details: ["17-year-old employee at Rising Tide Car Wash", "Person with autism who takes pride in his work", "Organizes supplies and assists customers", "Believes his work makes a real difference"] }, { name: "Thomas Deery", keyframe_image: true, entity_role: "subject", details: ["Co-founder of Rising Tide Car Wash with his father", "Brother to Andrew Deery", "Advocate for autism employment opportunities", "Believes employees with autism exceed expectations"] }, { name: "Andrew Deery", keyframe_image: true, entity_role: "subject", details: ["Younger brother of Thomas Deery", "Employee with autism at Rising Tide Car Wash", "Specializes in tire shine work", "Inspiration for the business creation"] }, { name: "Cristian Benavides", keyframe_image: true, entity_role: "journalist", affiliation: "CBS News", details: ["Role: Journalist narrator", "Affiliation: CBS News", "Contribution: Reports from Coral Springs, Florida"] }, { name: "Rising Tide Car Wash", keyframe_image: true, entity_role: "organization", details: ["Car wash business in Coral Springs, Florida", "Employs over 100 people across three locations", "More than 80% of staff have autism", "Founded to provide employment opportunities for people with autism"] }]
+        },
+        {
+            id: "ds3", video_filename: "video10.mp4", duration_sec: 143.143, headline: "Virginia Anti-War Protesters Oppose Iran Strikes", summary: "Richmond protesters gather opposing Trump's Iran military strikes as Virginia lawmakers show divided reactions.", tone_tags: ["Concerned", "Investigative", "Contemporary"], synopsis: "Following President Trump's announcement of successful U.S. military strikes on Iran's three nuclear facilities, anti-war protesters gathered at Richmond's Abner Clay Park to voice opposition. Around 50 demonstrators, including members of Veterans for Peace and the Party for Socialism and Liberation, expressed concerns that the strikes could lead to retaliation and escalation in the Middle East. Rain Burrows, speaking for Veterans for Peace, emphasized that the majority of Americans do not want war with Iran.\n\nVirginia lawmakers have shown divided responses to the president's decision. Republican Congressman John McGuire supported the strikes, stating that Iran can never be allowed nuclear weapons and citing the country's history as a state sponsor of terror. Governor Glenn Youngkin praised Trump for keeping his promises regarding Iran. However, Democratic Senator Mark Warner, while acknowledging Iran's threat to regional stability, raised concerns about conducting military strikes without congressional authorization or consultation, questioning the constitutional process behind such significant military action.", topic_tags: ["Iran", "Military Strikes", "Protest", "Virginia Politics", "Anti-War", "Nuclear Weapons", "Congressional Authorization"],
+            chapters: [{ title: "Trump Announces Iran Strikes", description: "President Trump's announcement of successful military strikes on Iran's nuclear facilities.", chapter_in_point: { sec: 0.000 }, sound_bites: [{ text: "The strikes were a spectacular military success.", speaker_name: "Donald Trump" }] }, { title: "Richmond Protest Rally", description: "Anti-war demonstrators gather at Abner Clay Park to oppose the Iran strikes.", chapter_in_point: { sec: 12.813 }, sound_bites: [{ text: "The people of the United States do not want a war with Iran. That is the majority.", speaker_name: "Rain Burrows" }] }, { title: "Protester Perspectives", description: "Individual protesters share their concerns about the military action and its potential consequences.", chapter_in_point: { sec: 56.056 }, sound_bites: [{ text: "You know, just as people, we need to be paying attention to what's happening...these actions affect everybody.", speaker_name: "Unidentified Male Protestor" }, { text: "Because I'm in touch with my humanity. And I'm, you know, horrified that not everybody else is.", speaker_name: "Unidentified Female Protestor" }] }, { title: "Virginia Political Reactions", description: "Divided responses from Virginia's Republican and Democratic lawmakers to the Iran strikes.", chapter_in_point: { sec: 72.105 } }, { title: "Congressional Authorization Concerns", description: "Senator Warner raises questions about military action without congressional consultation.", chapter_in_point: { sec: 105.039 } }, { title: "Fear of Retaliation", description: "Protesters express concerns about potential Iranian retaliation and escalating conflict.", chapter_in_point: { sec: 131.164 }, sound_bites: [{ text: "And now we're bombing Iran. And I'm just waiting for it to come back and start falling in our laps.", speaker_name: "Unidentified Female Protestor" }] }],
+            key_entities: [{ name: "Donald Trump", keyframe_image: true, entity_role: "subject", details: ["President of the United States", "Announced military strikes on Iran's nuclear facilities", "Described strikes as 'spectacular military success'"] }, { name: "Rain Burrows", keyframe_image: true, entity_role: "subject", details: ["Representative of Veterans for Peace", "Anti-war protest organizer", "Stated majority of Americans oppose war with Iran"] }, { name: "John McGuire", keyframe_image: true, entity_role: "subject", details: ["Republican Congressman from Virginia", "Supported Trump's Iran strikes", "Stated Iran can never be allowed nuclear weapons"] }, { name: "Glenn Youngkin", keyframe_image: true, entity_role: "subject", details: ["Governor of Virginia", "Praised Trump for keeping his promises on Iran", "Posted supportive message on social media"] }, { name: "Mark Warner", keyframe_image: true, entity_role: "subject", details: ["Democratic Senator from Virginia", "Vice Chairman of Senate Intelligence Committee", "Questioned lack of congressional authorization for strikes"] }, { name: "SPEAKER_02", keyframe_image: null, entity_role: "journalist", affiliation: "Unknown", details: ["Role: Journalist narrator", "Affiliation: Unknown", "Contribution: Provides story narration and context"] }]
+        },
+        {
+            id: "ds4", video_filename: "video12.mp4", duration_sec: 144.957, headline: "National Park Service Faces Lifeguard Shortage Crisis", summary: "Assateague Island lacks lifeguards due to Trump administration hiring freeze affecting National Park Service staffing nationwide.", tone_tags: ["Concerned", "Investigative", "Urgent"], synopsis: "CBS News reports on a critical safety issue at Assateague Island National Seashore, where families visit popular beaches without lifeguard protection. The National Parks Conservation Association reveals that permanent staffing has dropped 24% system-wide since President Trump took office, with less than half of seasonal positions filled. Ed Sturley from the conservation group attributes the shortage to hiring freezes implemented by the current administration, calling it a symptom of broader dysfunction affecting the agency.\n\nThe story highlights the human cost of these policy decisions through Mayor Zach Tindall, a former firefighter-paramedic who has witnessed both successful rescues and tragic losses at the beach. With a proposed $1 billion budget cut to the National Park Service looming, the situation threatens to worsen. The administration maintains that fire, law enforcement, and public-facing personnel remain prioritized, but advocates warn that every day without lifeguards puts swimmers, residents, and visitors in jeopardy.", topic_tags: ["National Parks", "Lifeguard Shortage", "Trump Administration", "Budget Cuts", "Public Safety", "Assateague Island", "Park Service Staffing"],
+            chapters: [{ title: "Staffing Crisis Overview", description: "Introduction to widespread National Park Service staffing cuts and their impact on safety.", chapter_in_point: { sec: 0.934 } }, { title: "Assateague Island Setting", description: "Profile of the popular Maryland beach destination and local perspective on safety concerns.", chapter_in_point: { sec: 17.017 }, sound_bites: [{ text: "I don't want to see anybody drown.", speaker_name: "Zach Tindall" }] }, { title: "Safety Impact Evidence", description: "Visual documentation of unmanned lifeguard stations and crowded beaches without supervision.", chapter_in_point: { sec: 45.913 } }, { title: "Analysis and Blame", description: "Expert assessment linking staffing problems to Trump administration policies.", chapter_in_point: { sec: 67.567 }, sound_bites: [{ text: "This was a policy put into place by the current Trump administration that led to a complete hiring freeze on all hiring across the National Park Service.", speaker_name: "Ed Sturley" }, { text: "The reason there are no lifeguards at Assateague is honestly a symptom of the chaos and dysfunction that has been impacting this agency since the beginning of this administration.", speaker_name: "Ed Sturley" }] }, { title: "Official Response", description: "Trump administration statement defending personnel priorities amid criticism.", chapter_in_point: { sec: 108.508 } }, { title: "Community Concerns", description: "Local mayor expresses urgent safety fears for beachgoers and residents.", chapter_in_point: { sec: 116.983 }, sound_bites: [{ text: "Every day that we don't have a lifeguard here on the beach is putting every one of these swimmers... in jeopardy.", speaker_name: "Zach Tindall" }] }, { title: "Future Outlook", description: "Warning about potential worsening conditions under proposed budget cuts.", chapter_in_point: { sec: 130.497 } }],
+            key_entities: [{ name: "Nancy Chen", keyframe_image: true, entity_role: "journalist", affiliation: "CBS News", details: ["Role: Journalist narrator", "Affiliation: CBS News", "Contribution: Reports on National Park Service staffing crisis"] }, { name: "Zach Tindall", keyframe_image: true, entity_role: "subject", details: ["Role: Mayor of Berlin, Maryland", "Background: Former firefighter paramedic", "Connection: Familiar with Assateague Island rescues", "Concern: Public safety without lifeguards"] }, { name: "Ed Sturley", keyframe_image: true, entity_role: "expert", details: ["Role: Representative of National Parks Conservation Association", "Expertise: National Park Service staffing analysis", "Position: Critical of Trump administration policies", "Data: Compiled staffing shortage statistics"] }]
+        },
+        {
+            id: "ds5", video_filename: "video13.mp4", duration_sec: 111.651, headline: "Trump's Big Beautiful Bill Passes House", summary: "House Republicans pass Trump's massive budget bill extending tax cuts and boosting defense spending despite Democratic opposition.", tone_tags: ["Contentious", "Political", "Consequential"], synopsis: "House Republicans delivered President Trump a significant legislative victory by passing his so-called \"Big Beautiful Bill,\" a massive budget package that extends the 2017 tax cuts, increases defense and border security spending, and eliminates taxes on tips and overtime pay. The bill passed after intense negotiations, with Trump himself working to secure support from GOP holdouts. The legislation also increases the child tax credit and boosts funding for immigration enforcement.\n\nDemocrats unanimously opposed the bill, citing steep cuts to safety net programs including SNAP food assistance and Medicaid. House Minority Leader Hakeem Jeffries delayed the final vote with a record-breaking eight-hour speech, denouncing the legislation as harmful to American families. The Congressional Budget Office estimates the bill could cut Medicaid by $930 billion, potentially leaving 11.8 million people at risk of losing healthcare coverage. President Trump is planning a July 4th White House signing ceremony for the legislation.", topic_tags: ["Budget legislation", "Tax cuts", "Healthcare cuts", "Congressional politics", "Trump agenda", "Republican priorities", "Democratic opposition"],
+            chapters: [{ title: "House Passes Budget Bill", description: "Speaker Mike Johnson gavels in the successful vote on Trump's Big Beautiful Bill.", chapter_in_point: { sec: 0.000 }, sound_bites: [{ text: "This is a great bill. This is going to be a great bill for the country.", speaker_name: "Donald Trump" }] }, { title: "Bill Provisions Overview", description: "Graphics detail the legislation's key components including tax cuts and spending increases.", chapter_in_point: { sec: 29.096 } }, { title: "Republican Support", description: "GOP congressman defends the bill as beneficial for ordinary Americans without lobbyists.", chapter_in_point: { sec: 43.844 }, sound_bites: [{ text: "The one big beautiful bill is for the people who don't have lobbyists in this town.", speaker_name: "Republican Congressman" }] }, { title: "Democratic Opposition Begins", description: "Reporter explains Democratic strategy to delay and oppose the legislation.", chapter_in_point: { sec: 50.650 } }, { title: "Medicaid Cuts Controversy", description: "Graphics show Congressional Budget Office estimates of healthcare coverage losses.", chapter_in_point: { sec: 67.434 } }, { title: "Jeffries Condemns Bill", description: "House Minority Leader delivers passionate speech denouncing the legislation as un-American.", chapter_in_point: { sec: 87.821 }, sound_bites: [{ text: "Shame on this institution if this bill passes. That's not America. We're better than this.", speaker_name: "Hakeem Jeffries" }] }, { title: "Presidential Signing Ceremony", description: "Trump signs the legislation and plans July 4th White House ceremony.", chapter_in_point: { sec: 95.662 } }],
+            key_entities: [{ name: "Donald Trump", keyframe_image: true, entity_role: "subject", details: ["President of the United States", "Championed the Big Beautiful Bill legislation", "Worked personally to secure GOP support", "Planning July 4th White House signing ceremony"] }, { name: "Mike Johnson", keyframe_image: true, entity_role: "subject", details: ["Speaker of the House", "Presided over the bill's passage", "Republican leader in negotiations"] }, { name: "Hakeem Jeffries", keyframe_image: true, entity_role: "subject", details: ["House Minority Leader", "Led Democratic opposition to the bill", "Delivered record-breaking 8-hour 44-minute speech", "Denounced legislation as harmful to American families"] }, { name: "Republican Congressman", keyframe_image: true, entity_role: "subject", details: ["House Republican member", "Defended bill as benefiting ordinary Americans", "Spoke in favor of the legislation"] }, { name: "Erica Brown", keyframe_image: true, entity_role: "journalist", affiliation: "CBS News", details: ["Role: Journalist narrator", "Affiliation: CBS News", "Contribution: Provides story narration and Capitol Hill reporting"] }]
+        },
+        {
+            id: "ds6", video_filename: "video15.mp4", duration_sec: 179.246, headline: "Michigan Gun Law Tests Family Justice Balance", summary: "Parents face prosecution under Michigan's new safe storage law after children accidentally shoot themselves with unsecured firearms.", tone_tags: ["Somber", "Investigative", "Urgent"], synopsis: "A Detroit mother of six, Tiara Taylor, faced criminal charges after her three-year-old son accidentally shot himself with an unsecured firearm in their home. Michigan's new safe storage law, passed in April 2023 amid a wave of mass shootings, requires gun owners to lock and disarm weapons when children are nearby. The law represents part of a nationwide movement, with 26 states now having similar legislation on the books.\n\nThe enforcement of these laws reveals deep political divisions, with CBS News finding that nearly all 36 cases charged in the past year came from less than a dozen counties, most with Democratic prosecutors. Republican prosecutor Pete Lucido questions whether breaking up families through prosecution truly serves justice, even as advocates like Eunice Benavidez, who lost her brother in an accidental shooting two decades ago, believe the laws will save lives. As Congress stalls on expanding federal gun legislation, Michigan's experience highlights the complex balance between child safety, parental responsibility, and Second Amendment rights.", topic_tags: ["Gun Safety Laws", "Michigan Legislation", "Child Safety", "Criminal Justice", "Parental Responsibility", "Second Amendment", "Accidental Shootings"],
+            chapters: [{ title: "Mother's Tragic Incident", description: "Tiara Taylor recounts the day her three-year-old son accidentally shot himself in their Detroit home.", chapter_in_point: { sec: 0.3 }, sound_bites: [{ text: "I can still when I close my eyes see the blood running down his face. It's something that haunts me.", speaker_name: "Tiara Taylor" }, { text: "I am very remorseful for what happened with my baby, and that's something that I'm going to have to live with for the rest of my life.", speaker_name: "Tiara Taylor" }] }, { title: "Michigan's New Law", description: "Michigan passes safe storage legislation requiring guns be locked when children are nearby.", chapter_in_point: { sec: 40.14 } }, { title: "Brother's Lost Future", description: "Eunice Benavidez shares how her brother Alejandro died in an accidental shooting twenty years ago.", chapter_in_point: { sec: 53.653 }, sound_bites: [{ text: "He was shot point blank on his face.", speaker_name: "Eunice Benavidez" }, { text: "It was hard to lose my big brother. I had plans to have him around, have him walk me down the aisle.", speaker_name: "Eunice Benavidez" }] }, { title: "Prosecutor's Dilemma", description: "Republican prosecutor Pete Lucido questions whether prosecuting grieving parents serves justice.", chapter_in_point: { sec: 98.165 }, sound_bites: [{ text: "You can put as many laws as you want in the books, but human nature, ignorance, it always takes control.", speaker_name: "Pete Lucido" }, { text: "Yes, it was a bad mistake. It could have been a fatal mistake. But if we take away that family support unit, are we making a bigger mistake?", speaker_name: "Pete Lucido" }] }, { title: "Political Divisions", description: "CBS News analysis reveals partisan differences in safe storage law enforcement across Michigan.", chapter_in_point: { sec: 126.159 } }, { title: "Taylor's Resolution", description: "Tiara Taylor receives probation on her birthday as judges grapple with these unprecedented cases.", chapter_in_point: { sec: 141.575 } }, { title: "National Impasse", description: "Congress remains stalled on expanding gun safety legislation despite state-level momentum.", chapter_in_point: { sec: 156.69 } }],
+            key_entities: [{ name: "Tiara Taylor", keyframe_image: true, entity_role: "subject", details: ["Mother of six from Detroit", "Charged under Michigan's safe storage law", "Three-year-old son accidentally shot himself", "Received probation sentence in February"] }, { name: "Eunice Benavidez", keyframe_image: true, entity_role: "advocate", details: ["Lost brother Alejandro in accidental shooting", "Brother died at age 14 in 2001", "Supports Michigan's safe storage law", "Advocates for gun safety measures"] }, { name: "Pete Lucido", keyframe_image: true, entity_role: "prosecutor", details: ["Republican Prosecutor for Macomb County", "Brought five safe storage cases", "Questions family impact of prosecutions", "Expresses concern about breaking up families"] }, { name: "Alejandro Guerrero", keyframe_image: true, entity_role: "victim", details: ["Died at age 14 in 2001", "Shot accidentally by friend at sleepover", "Brother of Eunice Benavidez", "Death occurred before safe storage laws"] }, { name: "Scott MacFarlane", keyframe_image: true, entity_role: "journalist", affiliation: "CBS News", details: ["Role: Journalist narrator", "Affiliation: CBS News", "Contribution: Investigates Michigan's safe storage law enforcement"] }]
+        }
+    ];
+
+    // --- DYNAMIC PAGE BUILDER ---
+
+    function formatTime(totalSeconds) {
+        if (isNaN(totalSeconds)) return '00:00';
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = Math.floor(totalSeconds % 60);
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
+        return `${formattedMinutes}:${formattedSeconds}`;
+    }
+
+    function generateIndex() {
+        const indexContainer = document.getElementById('index-panel');
+        if (!indexContainer) return;
+        const indexHTML = allDopeSheets.map((ds, index) => `
+            <div class="index-item cursor-pointer p-3 rounded-lg hover:bg-slate-200" data-index="${index}">
+                <div class="flex gap-4">
+                    <img src="${ds.id}/thumbnail.jpg" alt="${ds.headline}" class="w-28 h-20 object-cover rounded-md bg-slate-300 flex-shrink-0">
+                    <div>
+                        <h3 class="font-semibold text-slate-800 leading-tight">${ds.headline}</h3>
+                        <p class="text-sm font-medium text-slate-500 mt-1 flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5Z" clip-rule="evenodd" />
+                            </svg>
+                            <span>${formatTime(ds.duration_sec)}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>`).join('');
+        indexContainer.innerHTML = indexHTML;
+    }
+    
+    function loadDopeSheet(index) {
+        const dopeSheetData = allDopeSheets[index];
+        const container = document.getElementById('content-panel');
+        if (!container || !dopeSheetData) {
+            console.error("Container or data not found for index:", index);
+            return;
+        }
+
+        document.title = dopeSheetData.headline || 'Interactive Dope Sheet';
+        const isJournalist = (e) => e?.entity_role === "journalist" || e?.entity_flags?.includes("journalist");
+        const formatSynopsis = (text) => (text || '').split('\n\n').map(p => `<p class="mb-4">${p}</p>`).join('');
+
+        const journalistEntity = (dopeSheetData.key_entities || []).find(isJournalist);
+        const regularEntities  = (dopeSheetData.key_entities || []).filter(e => !isJournalist(e));
+        const descriptiveTags = dopeSheetData.descriptive_tags || dopeSheetData.tone_tags || [];
+        
+        container.innerHTML = `
+            <div id="dope-sheet-container" class="max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+                <header class="mb-12">
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">${dopeSheetData.headline}</h1>
+                    <p class="text-lg text-slate-600 italic">${dopeSheetData.summary}</p>
+                    ${ (descriptiveTags.length > 0) ? `<div class="flex items-center gap-2 text-sm text-slate-500 font-medium mt-3">${descriptiveTags.map(tag => `<span>${tag}</span>`).join('<span class="mx-1">&middot;</span>')}</div>` : '' }
+                </header>
+                <main>
+                    <section id="video-player-container" class="mb-8">
+                        <video id="main-video" controls class="w-full rounded-lg shadow-lg bg-black" poster="${dopeSheetData.id}/thumbnail.jpg">
+                            <source src="${dopeSheetData.id}/${dopeSheetData.video_filename}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </section>
+                    <section id="synopsis" class="mb-8 bg-white p-6 rounded-lg shadow-sm">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Synopsis</h2>
+                        <div>${formatSynopsis(dopeSheetData.synopsis)}</div>
+                    </section>
+                    <section id="topic-tags" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Topic Tags</h2>
+                        <div class="flex flex-wrap gap-2">${(dopeSheetData.topic_tags || []).map(tag => `<span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>
+                    </section>
+                    ${journalistEntity ? `
+                    <section id="journalist" class="mb-8">
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">Journalist</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-center gap-5">
+                        ${journalistEntity.keyframe_image ? `
+                        <img src="${dopeSheetData.id}/entity_${dopeSheetData.key_entities.indexOf(journalistEntity) + 1}.jpg"
+                            alt="${journalistEntity.name}"
+                            class="w-20 h-20 rounded-full object-cover bg-slate-200 flex-shrink-0">
+                        ` : ''}
+                        <div class="flex-grow">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="font-bold text-lg text-slate-900">${journalistEntity.name}</h3>
+                            <span class="text-xs uppercase tracking-wide px-2 py-1 rounded-full bg-slate-800 text-white">Journalist</span>
+                            ${journalistEntity.affiliation ? `<span class="text-xs px-2 py-1 rounded-full bg-sky-100 text-sky-800">${journalistEntity.affiliation}</span>` : `<span class="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800">Affiliation: Unknown</span>`}
+                        </div>
+                        <ul class="w-full text-sm text-slate-600 mt-2 list-disc list-outside ml-4 text-left">${(journalistEntity.details || []).map(detail => `<li>${detail}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                    </section>
+                    ` : '' }
+                    ${regularEntities.length > 0 ? `
+                    <section id="key-entities" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Main Characters</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            ${regularEntities.map(entity => {
+                                const originalIndex = dopeSheetData.key_entities.indexOf(entity);
+                                return `
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center">
+                                    <img src="${dopeSheetData.id}/entity_${originalIndex + 1}.jpg" alt="${entity.name}" class="w-24 h-24 rounded-full mb-3 object-cover bg-slate-200">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <h3 class="font-bold text-lg text-slate-900">${entity.name}</h3>
+                                        ${entity.entity_role ? `<span class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">${entity.entity_role}</span>` : ''}
+                                        </div>
+                                    <ul class="text-sm text-slate-600 mt-2 list-disc list-outside text-left ps-8">${(entity.details || []).map(detail => `<li>${detail}</li>`).join('')}</ul>
+                                </div>
+                            `}).join('')}
+                        </div>
+                    </section>
+                    ` : ''}
+                    <section id="key-chapters">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Story Beats</h2>
+                        <div class="space-y-6">
+                            ${(dopeSheetData.chapters || []).map((chapter, index) => `
+                                <div class="key-chapter bg-white p-4 rounded-lg shadow-sm flex flex-col md:flex-row gap-4 items-start">
+                                    <div class="w-full md:w-1/3 flex-shrink-0">
+                                        <video id="chapter-video-${index}" class="chapter-video w-full rounded-md cursor-pointer bg-black"
+                                            poster="${dopeSheetData.id}/chapter_${index + 1}.jpg"
+                                            preload="metadata" muted loop
+                                            data-video-id="chapter-video-${index}"
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            <source src="${dopeSheetData.id}/${dopeSheetData.video_filename}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="key-chapter-text flex-grow">
+                                        <h3 class="timestamp-link text-lg font-semibold text-sky-700 hover:text-sky-900 cursor-pointer" 
+                                            data-video-id="chapter-video-${index}" 
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            ${chapter.title}
+                                        </h3>
+                                        <p class="text-slate-600 mt-1">${chapter.description}</p>
+                                        ${(chapter.sound_bites || []).map(sb => `
+                                            <figure class="mt-4">
+                                                <blockquote class="soundbite-quote m-0 p-0 border-l-4 border-slate-200 pl-3">
+                                                    <p>"${sb.text}"</p>
+                                                </blockquote>
+                                                <figcaption class="text-right text-sm font-semibold text-slate-700 mt-1">- ${sb.speaker_name}</figcaption>
+                                            </figure>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                </main>
+            </div>
+        `;
+        
+        setupVideoInteractivity();
+    }
+
+    function setupVideoInteractivity() {
+        const mainVideo = document.getElementById('main-video');
+        if (!mainVideo) return;
+        let lastClickedchapterVideo = null;
+        mainVideo.addEventListener('ended', () => {
+            if (lastClickedchapterVideo) {
+                lastClickedchapterVideo.load();
+                lastClickedchapterVideo = null;
+            }
+        });
+        const keyChaptersSection = document.getElementById('key-chapters');
+        if (!keyChaptersSection) return;
+        keyChaptersSection.addEventListener('click', (event) => {
+            const target = event.target.closest('.timestamp-link, .chapter-video');
+            if (!target) return;
+            const clickedVideoId = target.dataset.videoId;
+            if (!clickedVideoId) return;
+            const clickedVideoElement = document.getElementById(clickedVideoId);
+            if (lastClickedchapterVideo && lastClickedchapterVideo !== clickedVideoElement) {
+                 lastClickedchapterVideo.load();
+            }
+            lastClickedchapterVideo = clickedVideoElement;
+            const startTime = parseFloat(target.dataset.startTime);
+            mainVideo.currentTime = startTime;
+            mainVideo.play();
+            mainVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const indexPanel = document.getElementById('index-panel');
+        generateIndex();
+        loadDopeSheet(0);
+        indexPanel.querySelector('.index-item[data-index="0"]').classList.add('bg-sky-200');
+        indexPanel.addEventListener('click', (event) => {
+            const clickedItem = event.target.closest('.index-item');
+            if (!clickedItem) return;
+            const currentActive = indexPanel.querySelector('.bg-sky-200');
+            if (currentActive) {
+                currentActive.classList.remove('bg-sky-200');
+            }
+            clickedItem.classList.add('bg-sky-200');
+            const index = clickedItem.dataset.index;
+            loadDopeSheet(parseInt(index, 10));
+        });
+    });
+</script>
+</body>
+</html>
