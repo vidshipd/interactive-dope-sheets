@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dope Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A little custom CSS for finer control */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A light gray background */
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        /* Custom styling for the blockquote to match the original feel */
+        .soundbite-quote {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1rem;
+            margin-top: 0rem; /* Adjusted for new layout */
+            font-style: italic;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-gray-800 text-white py-3 px-6 flex items-center justify-between border-b-4 border-sky-500">
+        <div class="flex items-center gap-4">
+            <img src="Newspath logo.PNG" alt="CBS Newspath Now Logo" class="h-10">
+            <span class="text-xl font-medium text-gray-200 hidden sm:block">Dope Sheets</span>
+        </div>
+        
+        <div class="flex items-baseline gap-2"> 
+            <span class="text-sm text-gray-400 relative top-[5px]">powered by</span> <img src="VideoShipLogo@2x.png" alt="VideoShip Logo" class="h-8 self-center">
+            <span class="text-base font-medium text-gray-300 italic relative top-[5px]">MediaLab</span> </div>
+    </header>
+
+    <div id="dope-sheet-container" class="max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+        </div>
+
+    <script>
+        // --- DATA SOURCE ---
+        const dopeSheetData = {
+  "export_thumbnail": {
+    "frame": 686,
+    "sec": 22.89
+  },
+  "headline": "Michigan Gun Law Tests Family Justice Balance",
+  "summary": "Parents face prosecution under Michigan's new safe storage law after children accidentally shoot themselves with unsecured firearms.",
+  "tone_tags": [
+    "Somber",
+    "Investigative",
+    "Urgent"
+  ],
+  "synopsis": "A Detroit mother of six, Tiara Taylor, faced criminal charges after her three-year-old son accidentally shot himself with an unsecured firearm in their home. Michigan's new safe storage law, passed in April 2023 amid a wave of mass shootings, requires gun owners to lock and disarm weapons when children are nearby. The law represents part of a nationwide movement, with 26 states now having similar legislation on the books.\n\nThe enforcement of these laws reveals deep political divisions, with CBS News finding that nearly all 36 cases charged in the past year came from less than a dozen counties, most with Democratic prosecutors. Republican prosecutor Pete Lucido questions whether breaking up families through prosecution truly serves justice, even as advocates like Eunice Benavidez, who lost her brother in an accidental shooting two decades ago, believe the laws will save lives. As Congress stalls on expanding federal gun legislation, Michigan's experience highlights the complex balance between child safety, parental responsibility, and Second Amendment rights.",
+  "topic_tags": [
+    "Gun Safety Laws",
+    "Michigan Legislation",
+    "Child Safety",
+    "Criminal Justice",
+    "Parental Responsibility",
+    "Second Amendment",
+    "Accidental Shootings"
+  ],
+  "chapters": [
+    {
+      "title": "Mother's Tragic Incident",
+      "description": "Tiara Taylor recounts the day her three-year-old son accidentally shot himself in their Detroit home.",
+      "representative_keyframe": {
+        "frame": 240,
+        "sec": 8.008
+      },
+      "chapter_in_point": {
+        "frame": 9,
+        "sec": 0.3
+      },
+      "chapter_out_point": {
+        "frame": 1203,
+        "sec": 40.14
+      },
+      "sound_bites": [
+        {
+          "text": "I can still when I close my eyes see the blood running down his face. It's something that haunts me.",
+          "speaker_name": "Tiara Taylor",
+          "in_point_frame": 285,
+          "in_point": "00:09.510",
+          "out_point_frame": 411,
+          "out_point": "00:13.714"
+        },
+        {
+          "text": "I am very remorseful for what happened with my baby, and that's something that I'm going to have to live with for the rest of my life.",
+          "speaker_name": "Tiara Taylor",
+          "in_point_frame": 488,
+          "in_point": "00:16.283",
+          "out_point_frame": 651,
+          "out_point": "00:21.722"
+        }
+      ]
+    },
+    {
+      "title": "Michigan's New Law",
+      "description": "Michigan passes safe storage legislation requiring guns be locked when children are nearby.",
+      "representative_keyframe": {
+        "frame": 1530,
+        "sec": 51.051
+      },
+      "chapter_in_point": {
+        "frame": 1203,
+        "sec": 40.14
+      },
+      "chapter_out_point": {
+        "frame": 1608,
+        "sec": 53.653
+      },
+      "sound_bites": []
+    },
+    {
+      "title": "Brother's Lost Future",
+      "description": "Eunice Benavidez shares how her brother Alejandro died in an accidental shooting twenty years ago.",
+      "representative_keyframe": {
+        "frame": 1970,
+        "sec": 65.732
+      },
+      "chapter_in_point": {
+        "frame": 1608,
+        "sec": 53.653
+      },
+      "chapter_out_point": {
+        "frame": 2942,
+        "sec": 98.165
+      },
+      "sound_bites": [
+        {
+          "text": "He was shot point blank on his face.",
+          "speaker_name": "Eunice Benavidez",
+          "in_point_frame": 2049,
+          "in_point": "00:68.368",
+          "out_point_frame": 2156,
+          "out_point": "00:71.942"
+        },
+        {
+          "text": "It was hard to lose my big brother. I had plans to have him around, have him walk me down the aisle.",
+          "speaker_name": "Eunice Benavidez",
+          "in_point_frame": 2461,
+          "in_point": "00:82.117",
+          "out_point_frame": 2817,
+          "out_point": "00:93.994"
+        }
+      ]
+    },
+    {
+      "title": "Prosecutor's Dilemma",
+      "description": "Republican prosecutor Pete Lucido questions whether prosecuting grieving parents serves justice.",
+      "representative_keyframe": {
+        "frame": 3091,
+        "sec": 103.103
+      },
+      "chapter_in_point": {
+        "frame": 2942,
+        "sec": 98.165
+      },
+      "chapter_out_point": {
+        "frame": 3781,
+        "sec": 126.159
+      },
+      "sound_bites": [
+        {
+          "text": "You can put as many laws as you want in the books, but human nature, ignorance, it always takes control.",
+          "speaker_name": "Pete Lucido",
+          "in_point_frame": 3059,
+          "in_point": "01:42.057",
+          "out_point_frame": 3235,
+          "out_point": "01:47.926"
+        },
+        {
+          "text": "Yes, it was a bad mistake. It could have been a fatal mistake. But if we take away that family support unit, are we making a bigger mistake?",
+          "speaker_name": "Pete Lucido",
+          "in_point_frame": 3549,
+          "in_point": "01:58.421",
+          "out_point_frame": 3776,
+          "out_point": "02:05.972"
+        }
+      ]
+    },
+    {
+      "title": "Political Divisions",
+      "description": "CBS News analysis reveals partisan differences in safe storage law enforcement across Michigan.",
+      "representative_keyframe": {
+        "frame": 3930,
+        "sec": 131.131
+      },
+      "chapter_in_point": {
+        "frame": 3781,
+        "sec": 126.159
+      },
+      "chapter_out_point": {
+        "frame": 4243,
+        "sec": 141.575
+      },
+      "sound_bites": []
+    },
+    {
+      "title": "Taylor's Resolution",
+      "description": "Tiara Taylor receives probation on her birthday as judges grapple with these unprecedented cases.",
+      "representative_keyframe": {
+        "frame": 4370,
+        "sec": 145.812
+      },
+      "chapter_in_point": {
+        "frame": 4243,
+        "sec": 141.575
+      },
+      "chapter_out_point": {
+        "frame": 4696,
+        "sec": 156.69
+      },
+      "sound_bites": []
+    },
+    {
+      "title": "National Impasse",
+      "description": "Congress remains stalled on expanding gun safety legislation despite state-level momentum.",
+      "representative_keyframe": {
+        "frame": 4750,
+        "sec": 158.525
+      },
+      "chapter_in_point": {
+        "frame": 4696,
+        "sec": 156.69
+      },
+      "chapter_out_point": {
+        "frame": 5371,
+        "sec": 179.246
+      },
+      "sound_bites": []
+    }
+  ],
+  "key_entities": [
+    {
+      "name": "Tiara Taylor",
+      "keyframe_image": {
+        "frame": 686,
+        "sec": 22.89
+      },
+      "bounding_box": {
+        "width": 190,
+        "height": 190,
+        "x": 485,
+        "y": 140
+      },
+      "entity_role": "subject",
+      "entity_flags": [
+        "subject",
+        "mother"
+      ],
+      "details": [
+        "Mother of six from Detroit",
+        "Charged under Michigan's safe storage law",
+        "Three-year-old son accidentally shot himself",
+        "Received probation sentence in February"
+      ]
+    },
+    {
+      "name": "Eunice Benavidez",
+      "keyframe_image": {
+        "frame": 3808,
+        "sec": 127.06
+      },
+      "bounding_box": {
+        "width": 170,
+        "height": 170,
+        "x": 555,
+        "y": 200
+      },
+      "entity_role": "advocate",
+      "entity_flags": [
+        "advocate",
+        "survivor"
+      ],
+      "details": [
+        "Lost brother Alejandro in accidental shooting",
+        "Brother died at age 14 in 2001",
+        "Supports Michigan's safe storage law",
+        "Advocates for gun safety measures"
+      ]
+    },
+    {
+      "name": "Pete Lucido",
+      "keyframe_image": {
+        "frame": 3091,
+        "sec": 103.103
+      },
+      "bounding_box": {
+        "width": 180,
+        "height": 180,
+        "x": 550,
+        "y": 160
+      },
+      "entity_role": "prosecutor",
+      "entity_flags": [
+        "prosecutor",
+        "official"
+      ],
+      "details": [
+        "Republican Prosecutor for Macomb County",
+        "Brought five safe storage cases",
+        "Questions family impact of prosecutions",
+        "Expresses concern about breaking up families"
+      ]
+    },
+    {
+      "name": "Alejandro Guerrero",
+      "keyframe_image": {
+        "frame": 1958,
+        "sec": 65.365
+      },
+      "bounding_box": {
+        "width": 160,
+        "height": 160,
+        "x": 620,
+        "y": 210
+      },
+      "entity_role": "victim",
+      "entity_flags": [
+        "victim",
+        "deceased"
+      ],
+      "details": [
+        "Died at age 14 in 2001",
+        "Shot accidentally by friend at sleepover",
+        "Brother of Eunice Benavidez",
+        "Death occurred before safe storage laws"
+      ]
+    },
+    {
+      "name": "Scott MacFarlane",
+      "keyframe_image": {
+        "frame": 4750,
+        "sec": 158.525
+      },
+      "bounding_box": {
+        "width": 180,
+        "height": 180,
+        "x": 550,
+        "y": 115
+      },
+      "entity_role": "journalist",
+      "affiliation": "CBS News",
+      "entity_flags": [
+        "journalist",
+        "narrator"
+      ],
+      "details": [
+        "Role: Journalist narrator",
+        "Affiliation: CBS News",
+        "Contribution: Investigates Michigan's safe storage law enforcement"
+      ]
+    }
+  ]
+};
+
+        const isJournalist = (e) =>
+            e?.entity_role === "journalist" || e?.entity_flags?.includes("journalist");
+
+        // --- DYNAMIC PAGE BUILDER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('dope-sheet-container');
+            if (!container || !dopeSheetData) {
+                console.error("Container or data not found!");
+                return;
+            }
+
+            // --- NEW: Separate the journalist from other entities ---
+            const journalistEntity = (dopeSheetData.key_entities || []).find(isJournalist);
+            const regularEntities  = (dopeSheetData.key_entities || []).filter(e => !isJournalist(e));
+
+            const entityImageMap = new Map();
+            dopeSheetData.key_entities.forEach((entity, index) => {
+                const imageUrl = `entity_${index + 1}.jpg`;
+                entityImageMap.set(entity.name, imageUrl);
+            });
+
+            document.title = dopeSheetData.headline || 'Interactive Dope Sheet';
+            const formatSynopsis = (text) => text.split('\n\n').map(p => `<p class="mb-4">${p}</p>`).join('');
+            const descriptiveTags = dopeSheetData.descriptive_tags || dopeSheetData.tone_tags || [];
+
+            // --- UPDATED: This entire innerHTML block is new ---
+            container.innerHTML = `
+                <header class="mb-12">
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">${dopeSheetData.headline}</h1>
+                    <p class="text-lg text-slate-600 italic">${dopeSheetData.summary}</p>
+                    ${ (descriptiveTags.length > 0) ? `<div class="flex items-center gap-2 text-sm text-slate-500 font-medium mt-3">${descriptiveTags.map(tag => `<span>${tag}</span>`).join('<span class="mx-1">&middot;</span>')}</div>` : '' }
+
+                <main>
+                    <section id="video-player-container" class="mb-8">
+                        <video id="main-video" controls class="w-full rounded-lg shadow-lg bg-black" poster="thumbnail.jpg">
+                            <source src="video15.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </section>
+
+                    <section id="synopsis" class="mb-8 bg-white p-6 rounded-lg shadow-sm">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Synopsis</h2>
+                        <div>${formatSynopsis(dopeSheetData.synopsis)}</div>
+                    </section>
+
+                    <section id="topic-tags" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Topic Tags</h2>
+                        <div class="flex flex-wrap gap-2">${dopeSheetData.topic_tags.map(tag => `<span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>
+                    </section>
+                    
+                    ${journalistEntity ? `
+                    <section id="journalist" class="mb-8">
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">Journalist</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-center gap-5">
+                        ${journalistEntity.keyframe_image ? `
+                        <img src="entity_${dopeSheetData.key_entities.indexOf(journalistEntity) + 1}.jpg"
+                            alt="${journalistEntity.name}"
+                            class="w-20 h-20 rounded-full object-cover bg-slate-200 flex-shrink-0">
+                        ` : ''}
+
+                        <div class="flex-grow">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="font-bold text-lg text-slate-900">${journalistEntity.name}</h3>
+                            <span class="text-xs uppercase tracking-wide px-2 py-1 rounded-full bg-slate-800 text-white">Journalist</span>
+                            ${journalistEntity.affiliation ? `
+                            <span class="text-xs px-2 py-1 rounded-full bg-sky-100 text-sky-800">
+                                ${journalistEntity.affiliation}
+                            </span>` : `
+                            <span class="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800">
+                                Affiliation: Unknown
+                            </span>`}
+                        </div>
+
+                        <ul class="w-full text-sm text-slate-600 mt-2 list-disc list-outside ml-4 text-left">
+                            ${ (journalistEntity.details || []).map(detail => `<li>${detail}</li>`).join('') }
+                        </ul>
+                        </div>
+                    </div>
+                    </section>
+                    ` : '' }
+
+                    ${regularEntities.length > 0 ? `
+                    <section id="key-entities" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Main Characters</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            ${regularEntities.map(entity => {
+                                const originalIndex = dopeSheetData.key_entities.indexOf(entity);
+                                return `
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center">
+                                    <img src="entity_${originalIndex + 1}.jpg" alt="${entity.name}" class="w-24 h-24 rounded-full mb-3 object-cover bg-slate-200">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <h3 class="font-bold text-lg text-slate-900">${entity.name}</h3>
+                                        ${entity.entity_role ? `<span class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                                            ${entity.entity_role}
+                                        </span>` : ''}
+                                        </div>
+                                    <ul class="text-sm text-slate-600 mt-2 list-disc list-outside text-left ps-8">${entity.details.map(detail => `<li>${detail}</li>`).join('')}</ul>
+                                </div>
+                            `}).join('')}
+                        </div>
+                    </section>
+                    ` : ''}
+                    
+                    <section id="key-chapters">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Story Beats</h2>
+                        <div class="space-y-6">
+                            ${dopeSheetData.chapters.map((chapter, index) => `
+                                <div class="key-chapter bg-white p-4 rounded-lg shadow-sm flex flex-col md:flex-row gap-4 items-start">
+                                    <div class="w-full md:w-1/3 flex-shrink-0">
+                                        <video id="chapter-video-${index}" class="chapter-video w-full rounded-md cursor-pointer bg-black"
+                                            poster="chapter_${index + 1}.jpg"
+                                            preload="metadata" muted loop
+                                            data-video-id="chapter-video-${index}"
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            <source src="video15.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="key-chapter-text flex-grow">
+                                        <h3 class="timestamp-link text-lg font-semibold text-sky-700 hover:text-sky-900 cursor-pointer" 
+                                            data-video-id="chapter-video-${index}" 
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            ${chapter.title}
+                                        </h3>
+                                        <p class="text-slate-600 mt-1">${chapter.description}</p>
+                                        ${chapter.sound_bites.map(sb => `
+                                            <figure class="mt-4">
+                                                <blockquote class="soundbite-quote m-0 p-0 border-l-4 border-slate-200 pl-3">
+                                                    <p>"${sb.text}"</p>
+                                                </blockquote>
+                                                <figcaption class="text-right text-sm font-semibold text-slate-700 mt-1">- ${sb.speaker_name}</figcaption>
+                                            </figure>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                </main>
+            `;
+            
+            setupVideoInteractivity();
+        });
+
+        function setupVideoInteractivity() {
+            const mainVideo = document.getElementById('main-video');
+            
+            // This will keep track of which chapter thumbnail was clicked
+            let lastClickedchapterVideo = null;
+
+            // When the main video finishes playing, reset the last clicked thumbnail to show its poster
+            mainVideo.addEventListener('ended', () => {
+                if (lastClickedchapterVideo) {
+                    lastClickedchapterVideo.load(); // .load() resets the video element to its initial state
+                    lastClickedchapterVideo = null; // Clear the tracker
+                }
+            });
+
+            // Handle clicks on any key chapter title or thumbnail
+            document.getElementById('key-chapters').addEventListener('click', (event) => {
+                const target = event.target.closest('.timestamp-link, .chapter-video');
+                if (!target) return;
+
+                // Find the specific <video> element for the chapter that was clicked
+                const clickedVideoId = target.dataset.videoId;
+                if (!clickedVideoId) return;
+                
+                const clickedVideoElement = document.getElementById(clickedVideoId);
+                
+                // If another chapter's playback was triggered previously, reset its thumbnail first
+                if (lastClickedchapterVideo && lastClickedchapterVideo !== clickedVideoElement) {
+                     lastClickedchapterVideo.load();
+                }
+
+                // Store a reference to the new chapter video that was clicked
+                lastClickedchapterVideo = clickedVideoElement;
+
+                // Get the start time from the element's data attribute
+                const startTime = parseFloat(target.dataset.startTime);
+                
+                // Jump the main video to the correct time and play
+                mainVideo.currentTime = startTime;
+                mainVideo.play();
+
+                // Bring the main video into view for the user for a better experience
+                mainVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        }
+    </script>
+
+</body>
+</html>
