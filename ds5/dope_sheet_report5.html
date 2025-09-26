@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dope Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A little custom CSS for finer control */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A light gray background */
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        /* Custom styling for the blockquote to match the original feel */
+        .soundbite-quote {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1rem;
+            margin-top: 0rem; /* Adjusted for new layout */
+            font-style: italic;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-gray-800 text-white py-3 px-6 flex items-center justify-between border-b-4 border-sky-500">
+        <div class="flex items-center gap-4">
+            <img src="Newspath logo.PNG" alt="CBS Newspath Now Logo" class="h-10">
+            <span class="text-xl font-medium text-gray-200 hidden sm:block">Dope Sheets</span>
+        </div>
+        
+        <div class="flex items-baseline gap-2"> 
+            <span class="text-sm text-gray-400 relative top-[5px]">powered by</span> <img src="VideoShipLogo@2x.png" alt="VideoShip Logo" class="h-8 self-center">
+            <span class="text-base font-medium text-gray-300 italic relative top-[5px]">MediaLab</span> </div>
+    </header>
+
+    <div id="dope-sheet-container" class="max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+        </div>
+
+    <script>
+        // --- DATA SOURCE ---
+        const dopeSheetData = {
+  "export_thumbnail": { "frame": 284, "sec": 9.476 },
+  "headline": "Trump's Big Beautiful Bill Passes House",
+  "summary": "House Republicans pass Trump's massive budget bill extending tax cuts and boosting defense spending despite Democratic opposition.",
+  "tone_tags": ["Contentious", "Political", "Consequential"],
+  "synopsis": "House Republicans delivered President Trump a significant legislative victory by passing his so-called \"Big Beautiful Bill,\" a massive budget package that extends the 2017 tax cuts, increases defense and border security spending, and eliminates taxes on tips and overtime pay. The bill passed after intense negotiations, with Trump himself working to secure support from GOP holdouts. The legislation also increases the child tax credit and boosts funding for immigration enforcement.\n\nDemocrats unanimously opposed the bill, citing steep cuts to safety net programs including SNAP food assistance and Medicaid. House Minority Leader Hakeem Jeffries delayed the final vote with a record-breaking eight-hour speech, denouncing the legislation as harmful to American families. The Congressional Budget Office estimates the bill could cut Medicaid by $930 billion, potentially leaving 11.8 million people at risk of losing healthcare coverage. President Trump is planning a July 4th White House signing ceremony for the legislation.",
+  "topic_tags": ["Budget legislation", "Tax cuts", "Healthcare cuts", "Congressional politics", "Trump agenda", "Republican priorities", "Democratic opposition"],
+  "chapters": [
+    {
+      "title": "House Passes Budget Bill",
+      "description": "Speaker Mike Johnson gavels in the successful vote on Trump's Big Beautiful Bill.",
+      "representative_keyframe": { "frame": 45, "sec": 1.501 },
+      "chapter_in_point": { "frame": 0, "sec": 0.000 },
+      "chapter_out_point": { "frame": 504, "sec": 16.817 },
+      "sound_bites": [
+        {
+          "text": "This is a great bill. This is going to be a great bill for the country.",
+          "speaker_name": "Donald Trump",
+          "in_point_frame": 294,
+          "in_point": "00:00:09.809",
+          "out_point_frame": 368,
+          "out_point": "00:00:12.278"
+        }
+      ]
+    },
+    {
+      "title": "Bill Provisions Overview",
+      "description": "Graphics detail the legislation's key components including tax cuts and spending increases.",
+      "representative_keyframe": { "frame": 1110, "sec": 37.036 },
+      "chapter_in_point": { "frame": 872, "sec": 29.096 },
+      "chapter_out_point": { "frame": 1312, "sec": 43.777 },
+      "sound_bites": []
+    },
+    {
+      "title": "Republican Support",
+      "description": "GOP congressman defends the bill as beneficial for ordinary Americans without lobbyists.",
+      "representative_keyframe": { "frame": 1334, "sec": 44.511 },
+      "chapter_in_point": { "frame": 1314, "sec": 43.844 },
+      "chapter_out_point": { "frame": 1520, "sec": 50.717 },
+      "sound_bites": [
+        {
+          "text": "The one big beautiful bill is for the people who don't have lobbyists in this town.",
+          "speaker_name": "Republican Congressman",
+          "in_point_frame": 1320,
+          "in_point": "00:00:44.044",
+          "out_point_frame": 1519,
+          "out_point": "00:00:50.683"
+        }
+      ]
+    },
+    {
+      "title": "Democratic Opposition Begins",
+      "description": "Reporter explains Democratic strategy to delay and oppose the legislation.",
+      "representative_keyframe": { "frame": 1621, "sec": 54.087 },
+      "chapter_in_point": { "frame": 1518, "sec": 50.650 },
+      "chapter_out_point": { "frame": 2024, "sec": 67.534 },
+      "sound_bites": []
+    },
+    {
+      "title": "Medicaid Cuts Controversy",
+      "description": "Graphics show Congressional Budget Office estimates of healthcare coverage losses.",
+      "representative_keyframe": { "frame": 2580, "sec": 86.109 },
+      "chapter_in_point": { "frame": 2021, "sec": 67.434 },
+      "chapter_out_point": { "frame": 2635, "sec": 87.921 },
+      "sound_bites": []
+    },
+    {
+      "title": "Jeffries Condemns Bill",
+      "description": "House Minority Leader delivers passionate speech denouncing the legislation as un-American.",
+      "representative_keyframe": { "frame": 2651, "sec": 88.471 },
+      "chapter_in_point": { "frame": 2632, "sec": 87.821 },
+      "chapter_out_point": { "frame": 2862, "sec": 95.495 },
+      "sound_bites": [
+        {
+          "text": "Shame on this institution if this bill passes. That's not America. We're better than this.",
+          "speaker_name": "Hakeem Jeffries",
+          "in_point_frame": 2647,
+          "in_point": "00:01:28.338",
+          "out_point_frame": 2868,
+          "out_point": "00:01:35.702"
+        }
+      ]
+    },
+    {
+      "title": "Presidential Signing Ceremony",
+      "description": "Trump signs the legislation and plans July 4th White House ceremony.",
+      "representative_keyframe": { "frame": 3135, "sec": 104.627 },
+      "chapter_in_point": { "frame": 2867, "sec": 95.662 },
+      "chapter_out_point": { "frame": 3345, "sec": 111.651 },
+      "sound_bites": []
+    }
+  ],
+  "key_entities": [
+    {
+      "name": "Donald Trump",
+      "keyframe_image": { "frame": 284, "sec": 9.476 },
+      "bounding_box": { "width": 250, "height": 250, "x": 488, "y": 121 },
+      "entity_role": "subject",
+      "entity_flags": ["subject", "president"],
+      "details": [
+        "President of the United States",
+        "Championed the Big Beautiful Bill legislation",
+        "Worked personally to secure GOP support",
+        "Planning July 4th White House signing ceremony"
+      ]
+    },
+    {
+      "name": "Mike Johnson",
+      "keyframe_image": { "frame": 794, "sec": 26.493 },
+      "bounding_box": { "width": 250, "height": 250, "x": 485, "y": 140 },
+      "entity_role": "subject",
+      "entity_flags": ["subject", "speaker"],
+      "details": [
+        "Speaker of the House",
+        "Presided over the bill's passage",
+        "Republican leader in negotiations"
+      ]
+    },
+    {
+      "name": "Hakeem Jeffries",
+      "keyframe_image": { "frame": 2651, "sec": 88.471 },
+      "bounding_box": { "width": 250, "height": 250, "x": 490, "y": 105 },
+      "entity_role": "subject",
+      "entity_flags": ["subject", "minority_leader"],
+      "details": [
+        "House Minority Leader",
+        "Led Democratic opposition to the bill",
+        "Delivered record-breaking 8-hour 44-minute speech",
+        "Denounced legislation as harmful to American families"
+      ]
+    },
+    {
+      "name": "Republican Congressman",
+      "keyframe_image": { "frame": 1334, "sec": 44.511 },
+      "bounding_box": { "width": 250, "height": 250, "x": 480, "y": 115 },
+      "entity_role": "subject",
+      "entity_flags": ["subject"],
+      "details": [
+        "House Republican member",
+        "Defended bill as benefiting ordinary Americans",
+        "Spoke in favor of the legislation"
+      ]
+    },
+    {
+      "name": "Erica Brown",
+      "keyframe_image": { "frame": 1621, "sec": 54.087 },
+      "bounding_box": { "width": 250, "height": 250, "x": 485, "y": 125 },
+      "entity_role": "journalist",
+      "affiliation": "CBS News",
+      "entity_flags": ["journalist", "narrator"],
+      "details": [
+        "Role: Journalist narrator",
+        "Affiliation: CBS News",
+        "Contribution: Provides story narration and Capitol Hill reporting"
+      ]
+    }
+  ]
+};
+
+        const isJournalist = (e) =>
+            e?.entity_role === "journalist" || e?.entity_flags?.includes("journalist");
+
+        // --- DYNAMIC PAGE BUILDER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('dope-sheet-container');
+            if (!container || !dopeSheetData) {
+                console.error("Container or data not found!");
+                return;
+            }
+
+            // --- NEW: Separate the journalist from other entities ---
+            const journalistEntity = (dopeSheetData.key_entities || []).find(isJournalist);
+            const regularEntities  = (dopeSheetData.key_entities || []).filter(e => !isJournalist(e));
+
+            const entityImageMap = new Map();
+            dopeSheetData.key_entities.forEach((entity, index) => {
+                const imageUrl = `entity_${index + 1}.jpg`;
+                entityImageMap.set(entity.name, imageUrl);
+            });
+
+            document.title = dopeSheetData.headline || 'Interactive Dope Sheet';
+            const formatSynopsis = (text) => text.split('\n\n').map(p => `<p class="mb-4">${p}</p>`).join('');
+            const descriptiveTags = dopeSheetData.descriptive_tags || dopeSheetData.tone_tags || [];
+
+            // --- UPDATED: This entire innerHTML block is new ---
+            container.innerHTML = `
+                <header class="mb-12">
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">${dopeSheetData.headline}</h1>
+                    <p class="text-lg text-slate-600 italic">${dopeSheetData.summary}</p>
+                    ${ (descriptiveTags.length > 0) ? `<div class="flex items-center gap-2 text-sm text-slate-500 font-medium mt-3">${descriptiveTags.map(tag => `<span>${tag}</span>`).join('<span class="mx-1">&middot;</span>')}</div>` : '' }
+
+                <main>
+                    <section id="video-player-container" class="mb-8">
+                        <video id="main-video" controls class="w-full rounded-lg shadow-lg bg-black" poster="thumbnail.jpg">
+                            <source src="video13.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </section>
+
+                    <section id="synopsis" class="mb-8 bg-white p-6 rounded-lg shadow-sm">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Synopsis</h2>
+                        <div>${formatSynopsis(dopeSheetData.synopsis)}</div>
+                    </section>
+
+                    <section id="topic-tags" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Topic Tags</h2>
+                        <div class="flex flex-wrap gap-2">${dopeSheetData.topic_tags.map(tag => `<span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>
+                    </section>
+                    
+                    ${journalistEntity ? `
+                    <section id="journalist" class="mb-8">
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">Journalist</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-center gap-5">
+                        ${journalistEntity.keyframe_image ? `
+                        <img src="entity_${dopeSheetData.key_entities.indexOf(journalistEntity) + 1}.jpg"
+                            alt="${journalistEntity.name}"
+                            class="w-20 h-20 rounded-full object-cover bg-slate-200 flex-shrink-0">
+                        ` : ''}
+
+                        <div class="flex-grow">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="font-bold text-lg text-slate-900">${journalistEntity.name}</h3>
+                            <span class="text-xs uppercase tracking-wide px-2 py-1 rounded-full bg-slate-800 text-white">Journalist</span>
+                            ${journalistEntity.affiliation ? `
+                            <span class="text-xs px-2 py-1 rounded-full bg-sky-100 text-sky-800">
+                                ${journalistEntity.affiliation}
+                            </span>` : `
+                            <span class="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800">
+                                Affiliation: Unknown
+                            </span>`}
+                        </div>
+
+                        <ul class="w-full text-sm text-slate-600 mt-2 list-disc list-outside ml-4 text-left">
+                            ${ (journalistEntity.details || []).map(detail => `<li>${detail}</li>`).join('') }
+                        </ul>
+                        </div>
+                    </div>
+                    </section>
+                    ` : '' }
+
+                    ${regularEntities.length > 0 ? `
+                    <section id="key-entities" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Main Characters</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            ${regularEntities.map(entity => {
+                                const originalIndex = dopeSheetData.key_entities.indexOf(entity);
+                                return `
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center">
+                                    <img src="entity_${originalIndex + 1}.jpg" alt="${entity.name}" class="w-24 h-24 rounded-full mb-3 object-cover bg-slate-200">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <h3 class="font-bold text-lg text-slate-900">${entity.name}</h3>
+                                        ${entity.entity_role ? `<span class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                                            ${entity.entity_role}
+                                        </span>` : ''}
+                                        </div>
+                                    <ul class="text-sm text-slate-600 mt-2 list-disc list-outside text-left ps-8">${entity.details.map(detail => `<li>${detail}</li>`).join('')}</ul>
+                                </div>
+                            `}).join('')}
+                        </div>
+                    </section>
+                    ` : ''}
+                    
+                    <section id="key-chapters">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Story Beats</h2>
+                        <div class="space-y-6">
+                            ${dopeSheetData.chapters.map((chapter, index) => `
+                                <div class="key-chapter bg-white p-4 rounded-lg shadow-sm flex flex-col md:flex-row gap-4 items-start">
+                                    <div class="w-full md:w-1/3 flex-shrink-0">
+                                        <video id="chapter-video-${index}" class="chapter-video w-full rounded-md cursor-pointer bg-black"
+                                            poster="chapter_${index + 1}.jpg"
+                                            preload="metadata" muted loop
+                                            data-video-id="chapter-video-${index}"
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            <source src="video13.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="key-chapter-text flex-grow">
+                                        <h3 class="timestamp-link text-lg font-semibold text-sky-700 hover:text-sky-900 cursor-pointer" 
+                                            data-video-id="chapter-video-${index}" 
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            ${chapter.title}
+                                        </h3>
+                                        <p class="text-slate-600 mt-1">${chapter.description}</p>
+                                        ${chapter.sound_bites.map(sb => `
+                                            <figure class="mt-4">
+                                                <blockquote class="soundbite-quote m-0 p-0 border-l-4 border-slate-200 pl-3">
+                                                    <p>"${sb.text}"</p>
+                                                </blockquote>
+                                                <figcaption class="text-right text-sm font-semibold text-slate-700 mt-1">- ${sb.speaker_name}</figcaption>
+                                            </figure>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                </main>
+            `;
+            
+            setupVideoInteractivity();
+        });
+
+        function setupVideoInteractivity() {
+            const mainVideo = document.getElementById('main-video');
+            
+            // This will keep track of which chapter thumbnail was clicked
+            let lastClickedchapterVideo = null;
+
+            // When the main video finishes playing, reset the last clicked thumbnail to show its poster
+            mainVideo.addEventListener('ended', () => {
+                if (lastClickedchapterVideo) {
+                    lastClickedchapterVideo.load(); // .load() resets the video element to its initial state
+                    lastClickedchapterVideo = null; // Clear the tracker
+                }
+            });
+
+            // Handle clicks on any key chapter title or thumbnail
+            document.getElementById('key-chapters').addEventListener('click', (event) => {
+                const target = event.target.closest('.timestamp-link, .chapter-video');
+                if (!target) return;
+
+                // Find the specific <video> element for the chapter that was clicked
+                const clickedVideoId = target.dataset.videoId;
+                if (!clickedVideoId) return;
+                
+                const clickedVideoElement = document.getElementById(clickedVideoId);
+                
+                // If another chapter's playback was triggered previously, reset its thumbnail first
+                if (lastClickedchapterVideo && lastClickedchapterVideo !== clickedVideoElement) {
+                     lastClickedchapterVideo.load();
+                }
+
+                // Store a reference to the new chapter video that was clicked
+                lastClickedchapterVideo = clickedVideoElement;
+
+                // Get the start time from the element's data attribute
+                const startTime = parseFloat(target.dataset.startTime);
+                
+                // Jump the main video to the correct time and play
+                mainVideo.currentTime = startTime;
+                mainVideo.play();
+
+                // Bring the main video into view for the user for a better experience
+                mainVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        }
+    </script>
+
+</body>
+</html>
