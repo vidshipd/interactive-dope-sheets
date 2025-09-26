@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dope Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A little custom CSS for finer control */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A light gray background */
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        /* Custom styling for the blockquote to match the original feel */
+        .soundbite-quote {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1rem;
+            margin-top: 0rem; /* Adjusted for new layout */
+            font-style: italic;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-gray-800 text-white py-3 px-6 flex items-center justify-between border-b-4 border-sky-500">
+        <div class="flex items-center gap-4">
+            <img src="Newspath logo.PNG" alt="CBS Newspath Now Logo" class="h-10">
+            <span class="text-xl font-medium text-gray-200 hidden sm:block">Dope Sheets</span>
+        </div>
+        
+        <div class="flex items-baseline gap-2"> 
+            <span class="text-sm text-gray-400 relative top-[5px]">powered by</span> <img src="VideoShipLogo@2x.png" alt="VideoShip Logo" class="h-8 self-center">
+            <span class="text-base font-medium text-gray-300 italic relative top-[5px]">MediaLab</span> </div>
+    </header>
+
+    <div id="dope-sheet-container" class="max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+        </div>
+
+    <script>
+        // --- DATA SOURCE ---
+        const dopeSheetData = {
+  "export_thumbnail": {
+    "frame": 1092,
+    "sec": 36.436
+  },
+  "headline": "National Park Service Faces Lifeguard Shortage Crisis",
+  "summary": "Assateague Island lacks lifeguards due to Trump administration hiring freeze affecting National Park Service staffing nationwide.",
+  "tone_tags": ["Concerned", "Investigative", "Urgent"],
+  "synopsis": "CBS News reports on a critical safety issue at Assateague Island National Seashore, where families visit popular beaches without lifeguard protection. The National Parks Conservation Association reveals that permanent staffing has dropped 24% system-wide since President Trump took office, with less than half of seasonal positions filled. Ed Sturley from the conservation group attributes the shortage to hiring freezes implemented by the current administration, calling it a symptom of broader dysfunction affecting the agency.\n\nThe story highlights the human cost of these policy decisions through Mayor Zach Tindall, a former firefighter-paramedic who has witnessed both successful rescues and tragic losses at the beach. With a proposed $1 billion budget cut to the National Park Service looming, the situation threatens to worsen. The administration maintains that fire, law enforcement, and public-facing personnel remain prioritized, but advocates warn that every day without lifeguards puts swimmers, residents, and visitors in jeopardy.",
+  "topic_tags": ["National Parks", "Lifeguard Shortage", "Trump Administration", "Budget Cuts", "Public Safety", "Assateague Island", "Park Service Staffing"],
+  "chapters": [
+    {
+      "title": "Staffing Crisis Overview",
+      "description": "Introduction to widespread National Park Service staffing cuts and their impact on safety.",
+      "representative_keyframe": {
+        "frame": 209,
+        "sec": 6.973
+      },
+      "chapter_in_point": {
+        "frame": 28,
+        "sec": 0.934
+      },
+      "chapter_out_point": {
+        "frame": 486,
+        "sec": 16.216
+      },
+      "sound_bites": []
+    },
+    {
+      "title": "Assateague Island Setting",
+      "description": "Profile of the popular Maryland beach destination and local perspective on safety concerns.",
+      "representative_keyframe": {
+        "frame": 750,
+        "sec": 25.025
+      },
+      "chapter_in_point": {
+        "frame": 510,
+        "sec": 17.017
+      },
+      "chapter_out_point": {
+        "frame": 1079,
+        "sec": 36.002
+      },
+      "sound_bites": [
+        {
+          "text": "I don't want to see anybody drown.",
+          "speaker_name": "Zach Tindall",
+          "in_point_frame": 1035,
+          "in_point": "00:34.555",
+          "out_point_frame": 1071,
+          "out_point": "00:35.757"
+        }
+      ]
+    },
+    {
+      "title": "Safety Impact Evidence",
+      "description": "Visual documentation of unmanned lifeguard stations and crowded beaches without supervision.",
+      "representative_keyframe": {
+        "frame": 1485,
+        "sec": 49.549
+      },
+      "chapter_in_point": {
+        "frame": 1376,
+        "sec": 45.913
+      },
+      "chapter_out_point": {
+        "frame": 2025,
+        "sec": 67.567
+      },
+      "sound_bites": []
+    },
+    {
+      "title": "Analysis and Blame",
+      "description": "Expert assessment linking staffing problems to Trump administration policies.",
+      "representative_keyframe": {
+        "frame": 2715,
+        "sec": 90.590
+      },
+      "chapter_in_point": {
+        "frame": 2025,
+        "sec": 67.567
+      },
+      "chapter_out_point": {
+        "frame": 3255,
+        "sec": 108.608
+      },
+      "sound_bites": [
+        {
+          "text": "This was a policy put into place by the current Trump administration that led to a complete hiring freeze on all hiring across the National Park Service.",
+          "speaker_name": "Ed Sturley",
+          "in_point_frame": 2485,
+          "in_point": "01:22.918",
+          "out_point_frame": 2748,
+          "out_point": "01:31.689"
+        },
+        {
+          "text": "The reason there are no lifeguards at Assateague is honestly a symptom of the chaos and dysfunction that has been impacting this agency since the beginning of this administration.",
+          "speaker_name": "Ed Sturley",
+          "in_point_frame": 2906,
+          "in_point": "01:36.978",
+          "out_point_frame": 3259,
+          "out_point": "01:48.743"
+        }
+      ]
+    },
+    {
+      "title": "Official Response",
+      "description": "Trump administration statement defending personnel priorities amid criticism.",
+      "representative_keyframe": {
+        "frame": 3375,
+        "sec": 112.652
+      },
+      "chapter_in_point": {
+        "frame": 3252,
+        "sec": 108.508
+      },
+      "chapter_out_point": {
+        "frame": 3509,
+        "sec": 117.083
+      },
+      "sound_bites": []
+    },
+    {
+      "title": "Community Concerns",
+      "description": "Local mayor expresses urgent safety fears for beachgoers and residents.",
+      "representative_keyframe": {
+        "frame": 3790,
+        "sec": 126.473
+      },
+      "chapter_in_point": {
+        "frame": 3506,
+        "sec": 116.983
+      },
+      "chapter_out_point": {
+        "frame": 3914,
+        "sec": 130.597
+      },
+      "sound_bites": [
+        {
+          "text": "Every day that we don't have a lifeguard here on the beach is putting every one of these swimmers... in jeopardy.",
+          "speaker_name": "Zach Tindall",
+          "in_point_frame": 3661,
+          "in_point": "02:02.168",
+          "out_point_frame": 3910,
+          "out_point": "02:10.495"
+        }
+      ]
+    },
+    {
+      "title": "Future Outlook",
+      "description": "Warning about potential worsening conditions under proposed budget cuts.",
+      "representative_keyframe": {
+        "frame": 4150,
+        "sec": 138.518
+      },
+      "chapter_in_point": {
+        "frame": 3911,
+        "sec": 130.497
+      },
+      "chapter_out_point": {
+        "frame": 4342,
+        "sec": 144.957
+      },
+      "sound_bites": []
+    }
+  ],
+  "key_entities": [
+    {
+      "name": "Nancy Chen",
+      "keyframe_image": {
+        "frame": 93,
+        "sec": 3.103
+      },
+      "bounding_box": {
+        "width": 180,
+        "height": 180,
+        "x": 550,
+        "y": 142
+      },
+      "entity_role": "journalist",
+      "affiliation": "CBS News",
+      "entity_flags": ["journalist", "narrator"],
+      "details": [
+        "Role: Journalist narrator",
+        "Affiliation: CBS News",
+        "Contribution: Reports on National Park Service staffing crisis"
+      ]
+    },
+    {
+      "name": "Zach Tindall",
+      "keyframe_image": {
+        "frame": 1092,
+        "sec": 36.436
+      },
+      "bounding_box": {
+        "width": 190,
+        "height": 190,
+        "x": 485,
+        "y": 120
+      },
+      "entity_role": "subject",
+      "entity_flags": ["subject", "local_official"],
+      "details": [
+        "Role: Mayor of Berlin, Maryland",
+        "Background: Former firefighter paramedic",
+        "Connection: Familiar with Assateague Island rescues",
+        "Concern: Public safety without lifeguards"
+      ]
+    },
+    {
+      "name": "Ed Sturley",
+      "keyframe_image": {
+        "frame": 2810,
+        "sec": 93.780
+      },
+      "bounding_box": {
+        "width": 200,
+        "height": 200,
+        "x": 490,
+        "y": 95
+      },
+      "entity_role": "expert",
+      "entity_flags": ["expert", "advocate"],
+      "details": [
+        "Role: Representative of National Parks Conservation Association",
+        "Expertise: National Park Service staffing analysis",
+        "Position: Critical of Trump administration policies",
+        "Data: Compiled staffing shortage statistics"
+      ]
+    }
+  ]
+};
+
+        const isJournalist = (e) =>
+            e?.entity_role === "journalist" || e?.entity_flags?.includes("journalist");
+
+        // --- DYNAMIC PAGE BUILDER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('dope-sheet-container');
+            if (!container || !dopeSheetData) {
+                console.error("Container or data not found!");
+                return;
+            }
+
+            // --- NEW: Separate the journalist from other entities ---
+            const journalistEntity = (dopeSheetData.key_entities || []).find(isJournalist);
+            const regularEntities  = (dopeSheetData.key_entities || []).filter(e => !isJournalist(e));
+
+            const entityImageMap = new Map();
+            dopeSheetData.key_entities.forEach((entity, index) => {
+                const imageUrl = `entity_${index + 1}.jpg`;
+                entityImageMap.set(entity.name, imageUrl);
+            });
+
+            document.title = dopeSheetData.headline || 'Interactive Dope Sheet';
+            const formatSynopsis = (text) => text.split('\n\n').map(p => `<p class="mb-4">${p}</p>`).join('');
+            const descriptiveTags = dopeSheetData.descriptive_tags || dopeSheetData.tone_tags || [];
+
+            // --- UPDATED: This entire innerHTML block is new ---
+            container.innerHTML = `
+                <header class="mb-12">
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">${dopeSheetData.headline}</h1>
+                    <p class="text-lg text-slate-600 italic">${dopeSheetData.summary}</p>
+                    ${ (descriptiveTags.length > 0) ? `<div class="flex items-center gap-2 text-sm text-slate-500 font-medium mt-3">${descriptiveTags.map(tag => `<span>${tag}</span>`).join('<span class="mx-1">&middot;</span>')}</div>` : '' }
+
+                <main>
+                    <section id="video-player-container" class="mb-8">
+                        <video id="main-video" controls class="w-full rounded-lg shadow-lg bg-black" poster="thumbnail.jpg">
+                            <source src="video12.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </section>
+
+                    <section id="synopsis" class="mb-8 bg-white p-6 rounded-lg shadow-sm">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Synopsis</h2>
+                        <div>${formatSynopsis(dopeSheetData.synopsis)}</div>
+                    </section>
+
+                    <section id="topic-tags" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Topic Tags</h2>
+                        <div class="flex flex-wrap gap-2">${dopeSheetData.topic_tags.map(tag => `<span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>
+                    </section>
+                    
+                    ${journalistEntity ? `
+                    <section id="journalist" class="mb-8">
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">Journalist</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-center gap-5">
+                        ${journalistEntity.keyframe_image ? `
+                        <img src="entity_${dopeSheetData.key_entities.indexOf(journalistEntity) + 1}.jpg"
+                            alt="${journalistEntity.name}"
+                            class="w-20 h-20 rounded-full object-cover bg-slate-200 flex-shrink-0">
+                        ` : ''}
+
+                        <div class="flex-grow">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="font-bold text-lg text-slate-900">${journalistEntity.name}</h3>
+                            <span class="text-xs uppercase tracking-wide px-2 py-1 rounded-full bg-slate-800 text-white">Journalist</span>
+                            ${journalistEntity.affiliation ? `
+                            <span class="text-xs px-2 py-1 rounded-full bg-sky-100 text-sky-800">
+                                ${journalistEntity.affiliation}
+                            </span>` : `
+                            <span class="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800">
+                                Affiliation: Unknown
+                            </span>`}
+                        </div>
+
+                        <ul class="w-full text-sm text-slate-600 mt-2 list-disc list-outside ml-4 text-left">
+                            ${ (journalistEntity.details || []).map(detail => `<li>${detail}</li>`).join('') }
+                        </ul>
+                        </div>
+                    </div>
+                    </section>
+                    ` : '' }
+
+                    ${regularEntities.length > 0 ? `
+                    <section id="key-entities" class="mb-8">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Main Characters</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            ${regularEntities.map(entity => {
+                                const originalIndex = dopeSheetData.key_entities.indexOf(entity);
+                                return `
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center">
+                                    <img src="entity_${originalIndex + 1}.jpg" alt="${entity.name}" class="w-24 h-24 rounded-full mb-3 object-cover bg-slate-200">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <h3 class="font-bold text-lg text-slate-900">${entity.name}</h3>
+                                        ${entity.entity_role ? `<span class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                                            ${entity.entity_role}
+                                        </span>` : ''}
+                                        </div>
+                                    <ul class="text-sm text-slate-600 mt-2 list-disc list-outside text-left ps-8">${entity.details.map(detail => `<li>${detail}</li>`).join('')}</ul>
+                                </div>
+                            `}).join('')}
+                        </div>
+                    </section>
+                    ` : ''}
+                    
+                    <section id="key-chapters">
+                        <h2 class="text-2xl font-bold border-b pb-2 mb-4">Story Beats</h2>
+                        <div class="space-y-6">
+                            ${dopeSheetData.chapters.map((chapter, index) => `
+                                <div class="key-chapter bg-white p-4 rounded-lg shadow-sm flex flex-col md:flex-row gap-4 items-start">
+                                    <div class="w-full md:w-1/3 flex-shrink-0">
+                                        <video id="chapter-video-${index}" class="chapter-video w-full rounded-md cursor-pointer bg-black"
+                                            poster="chapter_${index + 1}.jpg"
+                                            preload="metadata" muted loop
+                                            data-video-id="chapter-video-${index}"
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            <source src="video12.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="key-chapter-text flex-grow">
+                                        <h3 class="timestamp-link text-lg font-semibold text-sky-700 hover:text-sky-900 cursor-pointer" 
+                                            data-video-id="chapter-video-${index}" 
+                                            data-start-time="${chapter.chapter_in_point.sec}">
+                                            ${chapter.title}
+                                        </h3>
+                                        <p class="text-slate-600 mt-1">${chapter.description}</p>
+                                        ${chapter.sound_bites.map(sb => `
+                                            <figure class="mt-4">
+                                                <blockquote class="soundbite-quote m-0 p-0 border-l-4 border-slate-200 pl-3">
+                                                    <p>"${sb.text}"</p>
+                                                </blockquote>
+                                                <figcaption class="text-right text-sm font-semibold text-slate-700 mt-1">- ${sb.speaker_name}</figcaption>
+                                            </figure>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                </main>
+            `;
+            
+            setupVideoInteractivity();
+        });
+
+        function setupVideoInteractivity() {
+            const mainVideo = document.getElementById('main-video');
+            
+            // This will keep track of which chapter thumbnail was clicked
+            let lastClickedchapterVideo = null;
+
+            // When the main video finishes playing, reset the last clicked thumbnail to show its poster
+            mainVideo.addEventListener('ended', () => {
+                if (lastClickedchapterVideo) {
+                    lastClickedchapterVideo.load(); // .load() resets the video element to its initial state
+                    lastClickedchapterVideo = null; // Clear the tracker
+                }
+            });
+
+            // Handle clicks on any key chapter title or thumbnail
+            document.getElementById('key-chapters').addEventListener('click', (event) => {
+                const target = event.target.closest('.timestamp-link, .chapter-video');
+                if (!target) return;
+
+                // Find the specific <video> element for the chapter that was clicked
+                const clickedVideoId = target.dataset.videoId;
+                if (!clickedVideoId) return;
+                
+                const clickedVideoElement = document.getElementById(clickedVideoId);
+                
+                // If another chapter's playback was triggered previously, reset its thumbnail first
+                if (lastClickedchapterVideo && lastClickedchapterVideo !== clickedVideoElement) {
+                     lastClickedchapterVideo.load();
+                }
+
+                // Store a reference to the new chapter video that was clicked
+                lastClickedchapterVideo = clickedVideoElement;
+
+                // Get the start time from the element's data attribute
+                const startTime = parseFloat(target.dataset.startTime);
+                
+                // Jump the main video to the correct time and play
+                mainVideo.currentTime = startTime;
+                mainVideo.play();
+
+                // Bring the main video into view for the user for a better experience
+                mainVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        }
+    </script>
+
+</body>
+</html>
