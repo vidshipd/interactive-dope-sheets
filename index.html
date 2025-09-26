@@ -118,6 +118,8 @@
             return;
         }
 
+        container.scrollTop = 0;
+
         document.title = dopeSheetData.headline || 'Interactive Dope Sheet';
         const isJournalist = (e) => e?.entity_role === "journalist" || e?.entity_flags?.includes("journalist");
         const formatSynopsis = (text) => (text || '').split('\n\n').map(p => `<p class="mb-4">${p}</p>`).join('');
